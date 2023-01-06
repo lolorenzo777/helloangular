@@ -1,0 +1,15 @@
+<div class="card-container">
+    <h2>My Favorite Links</h2>
+
+    <mat-list role="list">
+        <app-url-item *ngFor="let url of urls; let i = index"
+                      [indexURL]="i"
+                      [urlName]="url.name"
+                      [tags]="url.tags"
+                      [id]="url.id"
+                      [url]="url.url"></app-url-item>
+    </mat-list>
+
+    <button mat-stroked-button type="button" [disabled]="!isAuth" (click)="onON()">Turn ON</button>
+    <button mat-stroked-button type="button" [disabled]="!isAuth" (click)="onOFF()">Turn OFF</button>
+</div>

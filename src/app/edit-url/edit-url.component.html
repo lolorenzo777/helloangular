@@ -1,0 +1,37 @@
+<form (ngSubmit)="onSubmit(frmediturl)" #frmediturl="ngForm">
+
+    <!-- field NAME-->
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput id="name" name="name" ngModel required>
+        </mat-form-field>
+    </div>
+
+    <!-- field URL-->
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>URL</mat-label>
+            <input matInput
+                   type="url"
+                   id="url"
+                   placeholder="https://"
+                   name="url"
+                   ngModel
+                   required
+                   minlength="9">
+            <mat-hint align="end">Enter a valid URL</mat-hint>
+        </mat-form-field>
+    </div>
+
+    <!-- field TAGS -->
+    <div>
+        <mat-form-field appearance="fill">
+            <mat-label>tags</mat-label>
+            <input matInput id="tags" name="tags" [ngModel]="defaultTags">
+            <mat-hint>#on, #off or any other value</mat-hint>
+        </mat-form-field>
+    </div>
+
+    <button mat-stroked-button type="submit" [disabled]="frmediturl.invalid">Enregistrer</button>
+</form>

@@ -1,0 +1,19 @@
+<mat-list-item role="listitem">
+
+    <div matListItemLine>
+        <a [href]=[url] tabindex="-1">{{ urlName }}</a><span class="chip"
+              [ngClass]="{'on': getTags() === '#on', 'off': getTags() !== '#on'}">{{ getTags() }}</span>
+        <a [routerLink]=[id] class="mx-2">détails</a>
+    </div>
+
+    <p matListItemLine>
+        <mat-form-field appearance="fill">
+            <mat-label matListItemLine>URL name</mat-label>
+            <input matInput [(ngModel)]="urlName">
+        </mat-form-field>
+        <span class="mx-1">
+            <mat-slide-toggle color="primary" [checked]="getChecked()" (change)="changeONOFFevent($event)">ON/OFF</mat-slide-toggle>
+        </span>
+    </p>
+</mat-list-item>
+<mat-divider></mat-divider>

@@ -1,0 +1,27 @@
+/* You can add global styles to this file, and also import other style files */
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+@for $i from 1 through 5 {
+    .m-#{$i} {
+        margin: #{$i}rem;
+    }
+
+    .mx-#{$i} {
+        margin-left: #{$i}rem;
+        margin-right: #{$i}rem;
+    }
+
+    .my-#{$i} {
+        margin-top: #{$i}rem;
+        margin-bottom: #{$i}rem;
+    }
+}

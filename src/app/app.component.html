@@ -1,0 +1,58 @@
+<mat-sidenav-container class="sidenav-container">
+  <!-- menu -->
+  <mat-sidenav #drawer class="sidenav" fixedInViewport
+               [attr.role]="(isHandset$ | async) ? 'dialog' : 'navigation'"
+               [mode]="(isHandset$ | async) ? 'over' : 'side'"
+               [opened]="(isHandset$ | async) === false">
+    <mat-toolbar>Hello</mat-toolbar>
+
+    <div class="mx-1" *ngIf="!AuthIsConnected()"><button mat-raised-button color="primary" (click)="onSignIn()">Connect</button></div>
+    <div class="mx-1" *ngIf="AuthIsConnected()"><button mat-raised-button color="warn" (click)="onSignOut()">Disconnect</button></div>
+
+    <mat-nav-list role="navigation">
+      <a mat-list-item routerLink="">home</a>
+      <a mat-list-item routerLinkActive="activemanuitem" routerLink="auth">Auth</a>
+      <a mat-list-item routerLinkActive="activemanuitem" routerLink="urls">Urls</a>
+      <a mat-list-item routerLinkActive="activemanuitem" routerLink="edit">Add Url</a>
+      <!--a mat-list-item routerLinkActive #rla="routerLinkActive" [activated]=rla.isActive routerLink="urls">Urls</a-->
+    </mat-nav-list>
+    <div class="mx-1">{{ lastUpdate | async | date }}</div>
+    <div class="mx-1" *ngIf="seconds>0">Connecté depuis {{ seconds }}</div>
+  </mat-sidenav>
+  <mat-sidenav position="end">End</mat-sidenav>
+
+  <section>
+    <!-- toolbar -->
+    <mat-toolbar color="primary">
+      <button
+              type="button"
+              aria-label="Toggle sidenav"
+              mat-icon-button
+              (click)="drawer.toggle()"
+              *ngIf="isHandset$ | async">
+        <mat-icon aria-label="Side nav toggle icon">menu</mat-icon>
+      </button>
+      <img
+           width="40"
+           alt="Angular Logo"
+           src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==" />
+      <span>Welcome Bob</span>
+      <span class="bar-spacer"></span>
+      <span><mat-icon>favorite</mat-icon></span>
+    </mat-toolbar>
+
+
+    <!-- Content -->
+    <div class="content" role="main">
+      <!--app-url-view></app-url-view-->
+      <router-outlet></router-outlet>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <div class="footer" #footer>
+    Love Angular?&nbsp;
+  </div>
+
+
+</mat-sidenav-container>
